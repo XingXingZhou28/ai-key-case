@@ -1,0 +1,528 @@
+.aiw-hide-native-cursor,
+.aiw-hide-native-cursor * {
+  cursor: none !important;
+}
+
+.aiw-cursor-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+}
+
+.aiw-cursor-asset {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 133px;
+  height: 131px;
+  display: block;
+  opacity: 0;
+  transform:
+    translate3d(
+      calc(var(--aiw-cursor-x, -100px) - var(--aiw-cursor-hotspot-x, 50px)),
+      calc(var(--aiw-cursor-y, -100px) - var(--aiw-cursor-hotspot-y, 37px)),
+      0
+    )
+    scale(0.9);
+  transform-origin: var(--aiw-cursor-hotspot-x, 50px) var(--aiw-cursor-hotspot-y, 37px);
+  transition:
+    opacity 120ms ease,
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.aiw-cursor-layer.is-visible .aiw-cursor-asset {
+  opacity: 1;
+  transform:
+    translate3d(
+      calc(var(--aiw-cursor-x, -100px) - var(--aiw-cursor-hotspot-x, 50px)),
+      calc(var(--aiw-cursor-y, -100px) - var(--aiw-cursor-hotspot-y, 37px)),
+      0
+    )
+    scale(1);
+}
+
+.aiw-chip-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147482990;
+  pointer-events: none;
+}
+
+.aiw-command-chip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 280px;
+  height: 72px;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  border: 2px solid rgba(37, 107, 181, 0.9);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 18% 46%, rgba(255, 255, 255, 0.88), rgba(223, 238, 255, 0.76) 48%, transparent 76%),
+    linear-gradient(100deg, rgba(229, 242, 255, 0.96), rgba(219, 235, 255, 0.9));
+  box-shadow:
+    inset 0 0 36px rgba(255, 255, 255, 0.86),
+    inset 0 -10px 28px rgba(76, 143, 255, 0.13),
+    0 14px 30px rgba(42, 95, 162, 0.15),
+    0 0 34px rgba(91, 158, 255, 0.18);
+  color: #1f67c8;
+  font: 800 24px/1 "SF Pro Display", "PingFang SC", "Noto Sans SC", Arial, sans-serif;
+  letter-spacing: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 30px 0 34px;
+  transform:
+    translate3d(var(--aiw-chip-x, -100px), var(--aiw-chip-y, -100px), 0)
+    scaleX(0.28)
+    scaleY(0.96);
+  transform-origin: 34px 50%;
+  transition:
+    opacity 120ms ease,
+    transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aiw-command-chip::before {
+  content: "";
+  position: absolute;
+  inset: -70% -18%;
+  background:
+    radial-gradient(circle at 18% 44%, rgba(255, 255, 255, 0.56), transparent 22%),
+    radial-gradient(circle at 78% 58%, rgba(90, 190, 255, 0.13), transparent 26%),
+    linear-gradient(115deg, transparent 0 36%, rgba(255, 255, 255, 0.34) 46%, transparent 58%);
+  opacity: 0.82;
+  transform: translateX(-16%);
+}
+
+.aiw-chip-layer.is-visible .aiw-command-chip {
+  opacity: 1;
+  transform:
+    translate3d(var(--aiw-chip-x, -100px), var(--aiw-chip-y, -100px), 0)
+    scaleX(1)
+    scaleY(1);
+}
+
+.aiw-command-icon,
+.aiw-command-label {
+  position: relative;
+  z-index: 1;
+}
+
+.aiw-command-icon {
+  width: 38px;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 5px);
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.aiw-command-icon span {
+  width: 5px;
+  border-radius: 999px;
+  background: #2d72ce;
+  opacity: 0.86;
+}
+
+.aiw-command-icon span:nth-child(1) {
+  height: 16px;
+}
+
+.aiw-command-icon span:nth-child(2) {
+  height: 26px;
+}
+
+.aiw-command-icon span:nth-child(3) {
+  height: 12px;
+  opacity: 0.38;
+}
+
+.aiw-command-label {
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 260ms 130ms ease,
+    transform 260ms 130ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aiw-chip-layer.is-visible .aiw-command-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.aiw-command-chip-asset {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 365px;
+  height: 198px;
+  display: block;
+  opacity: 0;
+  transform:
+    translate3d(var(--aiw-chip-x, -100px), var(--aiw-chip-y, -100px), 0)
+    scale(0.92);
+  transform-origin: 64px 58px;
+  transition:
+    opacity 160ms ease,
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.aiw-chip-layer.is-visible .aiw-command-chip-asset {
+  opacity: 1;
+  transform:
+    translate3d(var(--aiw-chip-x, -100px), var(--aiw-chip-y, -100px), 0)
+    scale(1);
+}
+
+.aiw-voice-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+}
+
+.aiw-voice-composite {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 349px;
+  height: 198px;
+  opacity: 0;
+  transform: translate3d(var(--aiw-voice-x, -100px), var(--aiw-voice-y, -100px), 0);
+  transition: opacity 120ms ease;
+  user-select: none;
+}
+
+.aiw-voice-layer.is-visible .aiw-voice-composite {
+  opacity: 1;
+}
+
+.aiw-voice-cursor-asset {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 133px;
+  height: 131px;
+  display: block;
+}
+
+.aiw-voice-bubble {
+  position: absolute;
+  left: var(--aiw-voice-bubble-x, 82px);
+  top: var(--aiw-voice-bubble-y, 56px);
+  min-width: 212px;
+  max-width: min(520px, calc(100vw - 32px));
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(#020407, #020407) padding-box,
+    conic-gradient(from 230deg, #23d47b, #ffa800, #ff2563, #798aff, #4688ff, #46c0ff, #23d47b) border-box;
+  box-shadow:
+    inset 0 -24px 36px rgba(42, 215, 228, 0.34),
+    inset 0 18px 28px rgba(0, 0, 0, 0.78),
+    0 18px 34px rgba(0, 0, 0, 0.36),
+    0 0 48px rgba(70, 192, 255, 0.18);
+  color: rgba(255, 255, 255, 0.96);
+  font: 800 22px/1 "SF Pro Display", "PingFang SC", "Noto Sans SC", Arial, sans-serif;
+  letter-spacing: 0;
+  overflow: hidden;
+  padding: 0 28px 0 28px;
+}
+
+.aiw-voice-bubble::before {
+  content: "";
+  position: absolute;
+  inset: -70% -18%;
+  background:
+    radial-gradient(circle at 22% 42%, rgba(255, 255, 255, 0.26), transparent 22%),
+    radial-gradient(circle at 72% 86%, rgba(36, 224, 212, 0.28), transparent 30%),
+    linear-gradient(100deg, transparent 0 32%, rgba(255, 255, 255, 0.08) 44%, transparent 58%);
+  opacity: 0.9;
+}
+
+.aiw-voice-bars,
+.aiw-voice-text {
+  position: relative;
+  z-index: 1;
+}
+
+.aiw-voice-bars {
+  width: 32px;
+  display: inline-grid;
+  grid-template-columns: repeat(4, 3px);
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.aiw-voice-bars span {
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  transform-origin: 50% 50%;
+}
+
+.aiw-voice-bars span:nth-child(1) {
+  height: 14px;
+  animation: aiwVoiceWave 760ms ease-in-out infinite;
+}
+
+.aiw-voice-bars span:nth-child(2) {
+  height: 24px;
+  animation: aiwVoiceWave 680ms 90ms ease-in-out infinite;
+}
+
+.aiw-voice-bars span:nth-child(3) {
+  height: 20px;
+  animation: aiwVoiceWave 820ms 150ms ease-in-out infinite;
+}
+
+.aiw-voice-bars span:nth-child(4) {
+  height: 12px;
+  opacity: 0.75;
+  animation: aiwVoiceWave 720ms 210ms ease-in-out infinite;
+}
+
+.aiw-voice-layer:not(.is-listening) .aiw-voice-bars span {
+  animation-play-state: paused;
+}
+
+.aiw-voice-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aiw-voice-layer.is-typing .aiw-voice-text::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 0.92em;
+  margin-left: 3px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: translateY(0.08em);
+  animation: aiwTypingCaret 720ms steps(1, end) infinite;
+}
+
+.aiw-water-ripple-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2147482000;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.aiw-water-ripple-layer.is-fullscreen {
+  position: fixed;
+  z-index: 2147482500;
+}
+
+.aiw-water-ripple-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.aiw-edge-glow-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2147482600;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 520ms ease;
+}
+
+.aiw-edge-glow-layer.is-fullscreen {
+  position: fixed;
+}
+
+.aiw-edge-glow-layer.is-active {
+  opacity: var(--aiw-edge-opacity, 0.82);
+}
+
+.aiw-edge-glow-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: fill;
+  opacity: calc(0.92 * var(--aiw-edge-intensity, 1));
+  filter:
+    brightness(1)
+    saturate(calc(1.02 + var(--aiw-edge-intensity, 1) * 0.08))
+    drop-shadow(0 0 10px rgba(116, 196, 255, 0.18));
+  transform-origin: 50% 50%;
+  user-select: none;
+  will-change: opacity, transform, filter;
+}
+
+.aiw-edge-glow-layer.is-active .aiw-edge-glow-image {
+  animation: aiwEdgeGlowImageBreath 4600ms ease-in-out infinite;
+}
+
+.aiw-edge-glow,
+.aiw-edge-glow-corner {
+  position: absolute;
+  display: none;
+  opacity: 0;
+}
+
+.aiw-edge-glow-top {
+  left: 0;
+  top: calc(var(--aiw-edge-thickness, 42px) * -0.72);
+  width: 100%;
+  height: calc(var(--aiw-edge-thickness, 42px) * 1.9);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.16) 38%, transparent 100%),
+    linear-gradient(90deg, var(--aiw-edge-top-left), rgba(255, 255, 255, 0.3) 42%, var(--aiw-edge-top-right));
+}
+
+.aiw-edge-glow-right {
+  right: calc(var(--aiw-edge-thickness, 42px) * -0.72);
+  top: 0;
+  width: calc(var(--aiw-edge-thickness, 42px) * 1.9);
+  height: 100%;
+  background:
+    linear-gradient(270deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.12) 38%, transparent 100%),
+    linear-gradient(180deg, var(--aiw-edge-top-right), var(--aiw-edge-right) 46%, var(--aiw-edge-bottom-right));
+  animation-delay: -680ms;
+}
+
+.aiw-edge-glow-bottom {
+  left: 0;
+  bottom: calc(var(--aiw-edge-thickness, 42px) * -0.72);
+  width: 100%;
+  height: calc(var(--aiw-edge-thickness, 42px) * 1.9);
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.12) 38%, transparent 100%),
+    linear-gradient(90deg, var(--aiw-edge-bottom-left), rgba(255, 255, 255, 0.22) 48%, var(--aiw-edge-bottom-right));
+  animation-delay: -1180ms;
+}
+
+.aiw-edge-glow-left {
+  left: calc(var(--aiw-edge-thickness, 42px) * -0.72);
+  top: 0;
+  width: calc(var(--aiw-edge-thickness, 42px) * 1.9);
+  height: 100%;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.12) 38%, transparent 100%),
+    linear-gradient(180deg, var(--aiw-edge-top-left), var(--aiw-edge-left) 48%, var(--aiw-edge-bottom-left));
+  animation-delay: -1720ms;
+}
+
+.aiw-edge-glow-corner {
+  width: min(34vw, 360px);
+  height: min(34vw, 360px);
+  border-radius: 999px;
+  filter: blur(calc(var(--aiw-edge-blur, 32px) * 0.72)) saturate(calc(1.08 * var(--aiw-edge-intensity, 1)));
+  opacity: calc(0.52 * var(--aiw-edge-intensity, 1));
+}
+
+.aiw-edge-glow-corner-tl {
+  left: min(-15vw, -90px);
+  top: min(-15vw, -90px);
+  background: radial-gradient(circle, var(--aiw-edge-top-left) 0%, rgba(70, 192, 255, 0.24) 36%, transparent 72%);
+  animation-delay: -260ms;
+}
+
+.aiw-edge-glow-corner-tr {
+  right: min(-15vw, -90px);
+  top: min(-15vw, -90px);
+  background: radial-gradient(circle, var(--aiw-edge-top-right) 0%, rgba(255, 37, 99, 0.22) 34%, transparent 72%);
+  animation-delay: -860ms;
+}
+
+.aiw-edge-glow-corner-br {
+  right: min(-15vw, -90px);
+  bottom: min(-15vw, -90px);
+  background: radial-gradient(circle, var(--aiw-edge-bottom-right) 0%, rgba(35, 212, 123, 0.2) 34%, transparent 72%);
+  animation-delay: -1460ms;
+}
+
+.aiw-edge-glow-corner-bl {
+  left: min(-15vw, -90px);
+  bottom: min(-15vw, -90px);
+  background: radial-gradient(circle, var(--aiw-edge-bottom-left) 0%, rgba(121, 138, 255, 0.22) 34%, transparent 72%);
+  animation-delay: -2080ms;
+}
+
+@keyframes aiwVoiceWave {
+  0%,
+  100% {
+    transform: scaleY(0.54);
+  }
+
+  50% {
+    transform: scaleY(1.18);
+  }
+}
+
+@keyframes aiwTypingCaret {
+  0%,
+  48% {
+    opacity: 1;
+  }
+
+  49%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes aiwEdgeGlowBreath {
+  0%,
+  100% {
+    opacity: calc(0.62 * var(--aiw-edge-intensity, 1));
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: calc(0.94 * var(--aiw-edge-intensity, 1));
+    transform: scale(1.018);
+  }
+}
+
+@keyframes aiwEdgeGlowImageBreath {
+  0%,
+  100% {
+    opacity: calc(0.58 * var(--aiw-edge-intensity, 1));
+    filter:
+      brightness(0.96)
+      saturate(calc(1 + var(--aiw-edge-intensity, 1) * 0.06))
+      drop-shadow(0 0 6px rgba(116, 196, 255, 0.1));
+    transform: scale(0.999);
+  }
+
+  42% {
+    opacity: calc(1 * var(--aiw-edge-intensity, 1));
+    filter:
+      brightness(1.2)
+      saturate(calc(1.12 + var(--aiw-edge-intensity, 1) * 0.12))
+      drop-shadow(0 0 18px rgba(116, 196, 255, 0.28));
+    transform: scale(1.004);
+  }
+
+  58% {
+    opacity: calc(0.92 * var(--aiw-edge-intensity, 1));
+    filter:
+      brightness(1.1)
+      saturate(calc(1.08 + var(--aiw-edge-intensity, 1) * 0.1))
+      drop-shadow(0 0 14px rgba(116, 196, 255, 0.22));
+    transform: scale(1.002);
+  }
+}
